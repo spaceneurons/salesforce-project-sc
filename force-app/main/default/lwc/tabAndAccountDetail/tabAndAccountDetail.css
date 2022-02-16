@@ -1,0 +1,9 @@
+.customPagination {
+    margin-top: 10px;
+    font-size: 30px;
+    background-color: white;
+}
+
+.customPagination>a {
+    padding: 10px 10px;
+}
