@@ -6,7 +6,6 @@ global class HBBatch implements Database.Batchable<sObject>{
         
         String SOQL = 'SELECT ID, Name, Email, Birthdate FROM Contact WHERE DAY_IN_MONTH(Birthdate) = ' + 
                       tday.day() +  ' AND CALENDAR_MONTH(Birthdate) = ' + tday.month();
-        //возвращает локатор запросов, который запускает выбранный список возврата запроса SOQL
         return Database.getQueryLocator(SOQL);
     }
     

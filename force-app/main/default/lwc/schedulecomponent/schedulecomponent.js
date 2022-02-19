@@ -31,10 +31,12 @@ export default class LwcSchedule extends LightningElement {
     onSchedulable(){
           tets2({NameCronJobDetail: this.ScheduleName, CRONstr:this.valueCRON.data});
           console.log({NameCronJobDetail: this.ScheduleName});
+          window.location.reload();
         }
    
     offSchedulable(){
         stopSchedulable({NameCronJobDetail: this.ScheduleName});
+        window.location.reload();
        
     }  
     

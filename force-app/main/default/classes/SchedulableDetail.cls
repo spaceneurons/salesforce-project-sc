@@ -10,8 +10,6 @@ global with sharing class SchedulableDetail implements Schedulable{
     @AuraEnabled(cacheable=true)
     public static void runSchedulable(String apexClass){
         NameBatch = apexClass;
-        
-        
     }
     
 
