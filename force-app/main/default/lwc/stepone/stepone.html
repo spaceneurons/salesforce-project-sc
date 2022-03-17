@@ -1,0 +1,41 @@
+<template>
+    <article class="slds-card">
+        <div class="slds-card__body">
+            <div class="slds-align_absolute-center slds-text-heading_medium">
+                New Work Type
+            </div>
+        </div>
+        <footer class="slds-card__footer">
+            <div class="container-fluid">
+                <div class="form-group">
+                    <lightning-input type="text" name='workType' onchange={setWorkTypeInput} label="Work Type Name"
+                        required></lightning-input>
+                </div>
+                <lightning-input type="text" name="description" onchange={setWorkTypeInput} label="Description">
+                </lightning-input>
+                <lightning-input type="number" name="estimatedDuration" onchange={setWorkTypeInput}
+                    label="Estimated Duration" min=1 required>
+                </lightning-input>
+                <lightning-combobox name="durationType" label="Duration Type" value={value} placeholder="-Select-"
+                    options={options} onchange={setWorkTypeInput} required>
+                </lightning-combobox>
+                <div class="slds-p-top_medium">
+                    <lightning-input type="checkbox" name='shouldAutoCreateSvcAppt' onchange={setWorkTypeInput}
+                        label="Auto-create service apointment">
+                    </lightning-input>
+                </div>
+                <div class="slds-p-top_large">
+                    <div class="slds-clearfix">
+                        <div class="slds-float_right">
+                            <lightning-button variant="brand" label="Next" title="Next" onclick={handleSaveWorkType}
+                                class="slds-m-left_x-small">
+                            </lightning-button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </article>
+
+</template>

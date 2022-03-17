@@ -1,0 +1,209 @@
+<template>
+    <article class="slds-card">
+        <div class="slds-card__body">
+            <div class="slds-align_absolute-center slds-text-heading_medium">
+                New Product Required
+            </div>
+        </div>
+        <footer class="slds-card__footer">
+            <div class="slds-clearfix">
+                <div class="slds-float_none">
+
+
+
+
+                    <div class="slds-form-element">
+
+                        <div class="slds-form-element__control">
+                            <div class="slds-combobox_container">
+
+                                <div class={txtclassname} data-id="resultBox" aria-expanded="false"
+                                    aria-haspopup="listbox" role="combobox">
+                                    <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon slds-input-has-icon_left-right"
+                                        role="none">
+
+                                        <div>
+                                            <span
+                                                class="slds-icon_container slds-icon-utility-search slds-input__icon iconheight">
+                                                <lightning-icon
+                                                    class="slds-icon slds-icon slds-icon_small slds-icon-text-default"
+                                                    icon-name={iconName} size="x-small" alternative-text="icon">
+                                                </lightning-icon>
+                                            </span>
+                                        </div>
+                                        <lightning-input required read-only={inputReadOnly} data-id="userinput"
+                                            label="Parent Record" name="searchText" onchange={searchField}
+                                            value={selectRecordName} class="leftspace"></lightning-input>
+
+                                        <div if:true={iconFlag}>
+                                            <span
+                                                class="slds-icon_container slds-icon-utility-search slds-input__icon slds-input__icon_right iconheight">
+                                                <lightning-icon
+                                                    class="slds-icon slds-icon slds-icon_small slds-icon-text-default"
+                                                    icon-name="utility:search" size="x-small" alternative-text="icon">
+                                                </lightning-icon>
+                                            </span>
+                                        </div>
+                                        <div if:true={clearIconFlag}>
+                                            <button
+                                                class="slds-input__icon slds-input__icon_right slds-button slds-button_icon iconheight"
+                                                onclick={resetData}>
+                                                <lightning-icon class="slds-icon slds-icon slds-icon-text-default"
+                                                    icon-name="utility:clear" size="x-small" alternative-text="icon">
+                                                </lightning-icon>
+                                                <span class="slds-assistive-text">Clear</span>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <!-- Second part display result -->
+                                    <div id="listbox-id-1"
+                                        class="slds-dropdown slds-dropdown_length-with-icon-7 slds-dropdown_fluid"
+                                        role="listbox">
+                                        <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                                            <template for:each={searchRecords} for:item="serecord">
+                                                <li role="presentation" class="slds-listbox__item" key={serecord.recId}>
+
+                                                    <div data-id={serecord.recId} data-name={serecord.recName}
+                                                        onclick={setSelectedRecord}
+                                                        class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
+                                                        role="option">
+                                                        <span class="slds-media__figure">
+                                                            <span
+                                                                class="slds-icon_container slds-icon-standard-account">
+                                                                <lightning-icon icon-name={iconName}
+                                                                    class="slds-icon slds-icon slds-icon_small slds-icon-text-default"
+                                                                    size="x-small"></lightning-icon>
+                                                            </span>
+                                                        </span>
+                                                        <span class="slds-media__body">
+                                                            <span
+                                                                class="slds-listbox__option-text slds-listbox__option-text_entity">{serecord.recName}</span>
+                                                            <span
+                                                                class="slds-listbox__option-meta slds-listbox__option-meta_entity">{objectName}
+                                                                • {serecord.recName}</span>
+                                                        </span>
+                                                    </div>
+                                                </li>
+                                            </template>
+                                        </ul>
+                                    </div>
+                                    <div if:true={messageFlag}>
+                                        No result found.
+                                    </div>
+                                    <div if:true={LoadingText}>
+                                        Loading...
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--  input 2 -->
+                    <div class="slds-form-element">
+                        <div class="slds-form-element__control">
+                            <div class="slds-combobox_container">
+
+                                <div class={txtclassname2} data-id="resultBox" aria-expanded="false"
+                                    aria-haspopup="listbox" role="combobox">
+                                    <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon slds-input-has-icon_left-right"
+                                        role="none">
+
+                                        <div>
+                                            <span
+                                                class="slds-icon_container slds-icon-utility-search slds-input__icon iconheight">
+                                                <lightning-icon
+                                                    class="slds-icon slds-icon slds-icon_small slds-icon-text-default"
+                                                    icon-name={iconName2} size="x-small" alternative-text="icon">
+                                                </lightning-icon>
+                                            </span>
+                                        </div>
+                                        <lightning-input required read-only={inputReadOnly2} data-id="userinput"
+                                            label="Product Required" name="searchText" onchange={searchField2}
+                                            value={selectRecordName2} class="leftspace"></lightning-input>
+
+                                        <div if:true={iconFlag2}>
+                                            <span
+                                                class="slds-icon_container slds-icon-utility-search slds-input__icon slds-input__icon_right iconheight">
+                                                <lightning-icon
+                                                    class="slds-icon slds-icon slds-icon_small slds-icon-text-default"
+                                                    icon-name="utility:search" size="x-small" alternative-text="icon">
+                                                </lightning-icon>
+                                            </span>
+                                        </div>
+                                        <div if:true={clearIconFlag2}>
+                                            <button
+                                                class="slds-input__icon slds-input__icon_right slds-button slds-button_icon iconheight"
+                                                onclick={resetData2}>
+                                                <lightning-icon
+                                                    class="slds-icon slds-icon slds-icon_small slds-icon-text-default"
+                                                    icon-name="utility:clear" size="x-small" alternative-text="icon">
+                                                </lightning-icon>
+                                                <span class="slds-assistive-text">Clear</span>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <!-- Second part display result -->
+                                    <div id="listbox-id-2"
+                                        class="slds-dropdown slds-dropdown_length-with-icon-7 slds-dropdown_fluid"
+                                        role="listbox">
+                                        <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                                            <template for:each={searchRecords2} for:item="serecord">
+                                                <li role="presentation" class="slds-listbox__item" key={serecord.recId}>
+
+                                                    <div data-id={serecord.recId} data-name={serecord.recName}
+                                                        onclick={setSelectedRecord2}
+                                                        class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
+                                                        role="option">
+                                                        <span class="slds-media__figure">
+                                                            <span
+                                                                class="slds-icon_container slds-icon-standard-account">
+                                                                <lightning-icon icon-name={iconName2}
+                                                                    class="slds-icon slds-icon slds-icon_small slds-icon-text-default"
+                                                                    size="x-small"></lightning-icon>
+                                                            </span>
+                                                        </span>
+                                                        <span class="slds-media__body">
+                                                            <span
+                                                                class="slds-listbox__option-text slds-listbox__option-text_entity">{serecord.recName}</span>
+                                                            <span
+                                                                class="slds-listbox__option-meta slds-listbox__option-meta_entity">{objectName2}
+                                                                • {serecord.recName}</span>
+                                                        </span>
+                                                    </div>
+                                                </li>
+                                            </template>
+                                        </ul>
+                                    </div>
+                                    <div if:true={messageFlag2}>
+                                        No result found.
+                                    </div>
+                                    <div if:true={LoadingText2}>
+                                        Loading...
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <lightning-input type="number" name="quantityRequired" onchange={setProductInput}
+                    label="Quantity Required" min=1>
+                </lightning-input>
+                <lightning-combobox name="quantityUnitOfMeasure" label="Quantity Unit Of Measure" value={value}
+                    placeholder="-Select-" options={piskListOptions} onchange={setProductInput}>
+                </lightning-combobox>
+            </div>
+
+            <div class="slds-p-top_large">
+                <div class="slds-clearfix">
+                    <div class="slds-float_right">
+                        <lightning-button variant="brand" label="Next" title="Next" onclick={handleSaveProductRequired}
+                            class="slds-m-left_x-small">
+                        </lightning-button>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </article>
+</template>
