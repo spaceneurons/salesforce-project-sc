@@ -1,0 +1,13 @@
+<template>
+
+    <template if:true={createWorkOrder}>
+        <c-create-work-order onstepvaluechange={hanldeStepValueChange} onsetworkorderid={hanldeSetWorkOrderId}>
+        </c-create-work-order>
+    </template>
+
+    <template if:true={createWorkOrderLineItem}>
+        <c-create-work-order-line-item onstepvaluechange={hanldeStepValueChange} work-order-id={workOrderId}>
+        </c-create-work-order-line-item>
+    </template>
+
+</template>
